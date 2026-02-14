@@ -7,6 +7,10 @@ let W = canvas.width;
 let H = canvas.height;
 let frame = 0;
 
+// Load tomato image
+const tomatoImg = new Image();
+tomatoImg.src = 'tomatobird.png';
+
 // gameplay tuning
 let PIPE_SPEED = 2.6;
 const BASE_PIPE_SPEED = 2.6;
@@ -38,26 +42,11 @@ class Tomato {
     ctx.translate(this.x,this.y);
     ctx.rotate(tilt);
 
-    // tomato body gradient
-    const g = ctx.createRadialGradient(-6,-6,this.r*0.2,0,0,this.r);
-    g.addColorStop(0,'#ff9b9b');
-    g.addColorStop(0.25,'#ff6b6b');
-    g.addColorStop(1,'#c81d25');
-    ctx.beginPath(); ctx.fillStyle = g; ctx.arc(0,0,this.r,0,Math.PI*2); ctx.fill();
-
-    // highlight
-    ctx.beginPath(); ctx.fillStyle='rgba(255,255,255,0.25)'; ctx.ellipse(-6,-8,6,9, -0.8,0,Math.PI*2); ctx.fill();
-
-    // seeds
-    ctx.fillStyle = 'rgba(255,230,200,0.95)';
-    for(let i=0;i<5;i++){
-      const a = -1.3 + i*0.6;
-      ctx.beginPath(); ctx.ellipse(Math.cos(a)*6, Math.sin(a)*6, 2.3, 1.2, a-0.3, 0, Math.PI*2); ctx.fill();
+    // draw scaled image
+    const size = this.r * 2;
+    if(tomatoImg.complete){
+      ctx.drawImage(tomatoImg, -size/2, -size/2, size, size);
     }
-
-    // stem
-    ctx.fillStyle = '#2d6a4f';
-    ctx.beginPath(); ctx.moveTo(-4,-this.r+4); ctx.quadraticCurveTo(-6,-this.r-6,2,-this.r-8); ctx.quadraticCurveTo(6,-this.r-6,8,-this.r+2); ctx.fill();
 
     ctx.restore();
   }

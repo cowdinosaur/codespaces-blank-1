@@ -1,0 +1,23 @@
+:root{
+  --bg1:#9be7ff;
+  --bg2:#b7f0ff;
+  --ground:#7ec850;
+  --navy:#001f5b;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+body{display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--bg1),var(--bg2));}
+.wrap{width:520px;text-align:center}
+h1{margin:8px 0;font-size:28px;color:#222}
+.hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+#score{font-weight:600}
+#restart{padding:6px 10px;border-radius:6px;border:0;background:#ff6b6b;color:white;cursor:pointer}
+
+canvas{display:block;width:100%;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.12)}
+.hint{font-size:13px;color:#184; margin-top:8px}
+
+/* make buttons a bit more subtle */
+#restart{background:#ff8b7b}
+
+/* mobile tweaks */
+@media (max-width:560px){.wrap{width:92%}}
